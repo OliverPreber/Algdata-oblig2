@@ -367,12 +367,18 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public Iterator<T> iterator() {
 
+        Iterator<T> iterator = liste.iterator();
+        return iterator;
+
     }
 
     public Iterator<T> iterator(int indeks) {
 
-        Iterator<T> iterator = liste.iterator();
-        return iterator;
+        if (indeks >= 0 && indeks <= liste.size() ) {
+            return iterator(indeks);
+        } else {
+            throw new NoSuchElementException("Det er ingen verdier");
+        }
 
     }
 
