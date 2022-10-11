@@ -371,7 +371,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     public Iterator<T> iterator(int indeks) {
 
-
+        Iterator<T> iterator = liste.iterator();
+        return iterator;
 
     }
 
