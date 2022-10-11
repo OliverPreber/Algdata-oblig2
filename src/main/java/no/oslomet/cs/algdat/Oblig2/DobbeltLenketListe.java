@@ -366,17 +366,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public Iterator<T> iterator() {
-        Iterator<T> iterator = liste.iterator();
-        return iterator;
+
     }
 
     public Iterator<T> iterator(int indeks) {
 
-       if(indeks>=0 && indeks <= liste.size() ){
-            return iterator(indeks);
-       } else {
-           throw new NoSuchElementException("Ingen verdier");
-       }
+
 
     }
 
@@ -392,9 +387,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
         private DobbeltLenketListeIterator(int indeks) {
-            denne=finnNode(indeks);
-            fjernOK=false;
-            iteratorendringer=endringer;
+
         }
 
         @Override
@@ -404,17 +397,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public T next() {
-            if (!hasNext())throw new NoSuchElementException("Ingen verdier");
 
-            if(iteratorendringer != endringer){
-                throw new ConcurrentModificationException("endringer stemmer ikke");
-            }
-
-            fjernOK=true;
-            T temp=denne.verdi;
-            denne=denne.neste;
-
-            return denne.verdi;
         }
 
         /*Kode fra foresesningen programkode 3.3.4.c
@@ -433,33 +416,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         @Override
         public void remove() {
 
-            Node<T> p = denne;
-            if(antall == 0){
-                throw new IllegalStateException("kan ikke fjerne, siden det ikke finnes noen elementer");
-            }
-
-            if(endringer != iteratorendringer){
-                throw new ConcurrentModificationException("de er forskjellige");
-            }
-
-                fjernOK = false;
-                if(antall == 1){
-                    hale = null;
-                    hode = null;
-                }
-
-                if(denne == null){
-                    hale = hale.forrige;
-                }
-
-                if(denne.forrige == hode){
-                    hode = hode.neste;
-                }
-
-                endringer++;
-                iteratorendringer++;
-                liste.remove(p.forrige);
-                antall--;
 
         }
 
