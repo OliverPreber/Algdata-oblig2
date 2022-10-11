@@ -389,6 +389,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         private DobbeltLenketListeIterator(int indeks) {
 
+            denne = finnNode(indeks);
+            fjernOK = false;
+            iteratorendringer = endringer;
         }
 
         @Override
