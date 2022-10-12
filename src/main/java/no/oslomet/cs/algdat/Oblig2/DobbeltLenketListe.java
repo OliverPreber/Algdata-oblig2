@@ -434,6 +434,30 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         @Override
         public void remove() {
 
+            Node<T> p = denne;
+
+            if (antall == 0) throw new IllegalStateException("Det finnes ingen elementer, derfor kan det ikke fjernes");
+
+            if (endringer != iteratorendringer) throw new ConcurrentModificationException("Endringene er forskjellige");
+
+            fjernOK = false;
+            if (antall == 1) {
+                hale = null;
+                hode = null;
+            }
+
+            if (denne == null) {
+                hale = hale.forrige;
+            }
+
+            if (denne.forrige == hode) {
+                hode = hode.neste;
+            }
+
+            endringer++;
+            iteratorendringer++;
+            liste.remove(p.forrige);
+            antall--;
 
         }
 
