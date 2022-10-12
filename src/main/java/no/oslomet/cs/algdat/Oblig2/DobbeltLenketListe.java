@@ -4,6 +4,7 @@ package no.oslomet.cs.algdat.Oblig2;
 ////////////////// class DobbeltLenketListe //////////////////////////////
 
 
+import javax.swing.text.html.HTMLDocument;
 import java.util.*;
 
 
@@ -366,10 +367,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public Iterator<T> iterator() {
+<<<<<<< Updated upstream
 
         Iterator<T> iterator = liste.iterator();
         return iterator;
 
+=======
+        return iterator();
+>>>>>>> Stashed changes
     }
 
     public Iterator<T> iterator(int indeks) {
@@ -407,6 +412,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public T next() {
+<<<<<<< Updated upstream
 
             if (iteratorendringer != endringer) throw new ConcurrentModificationException("Endringer er feil");
             if (!hasNext()) throw new NoSuchElementException("Det er ingen verdier");
@@ -414,6 +420,13 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             fjernOK = true;
             T temp = denne.verdi;
             denne = denne.verdi;
+=======
+            if (iteratorendringer != endringer) throw new ConcurrentModificationException();
+            if (!hasNext())throw new NoSuchElementException("Ingen verdier");
+            fjernOK=true;
+            T temp=denne.verdi;
+            denne=denne.neste;
+>>>>>>> Stashed changes
 
             return denne.verdi;
         }
